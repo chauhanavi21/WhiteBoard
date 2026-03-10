@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --canvas-bg: #1e1e2e;
+    --toolbar-bg: rgba(30, 30, 46, 0.95);
+    --panel-bg: rgba(42, 42, 64, 0.98);
+    --border-color: rgba(100, 100, 140, 0.2);
+    --selection-color: #89b4fa;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(100, 100, 140, 0.3) transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: rgba(100, 100, 140, 0.3);
+    border-radius: 3px;
+  }
+
+  body {
+    overflow: hidden;
+    user-select: none;
+  }
+}
+
+@layer components {
+  .toolbar-btn {
+    @apply flex items-center justify-center w-9 h-9 rounded-lg 
+           text-surface-300 hover:text-surface-100 hover:bg-surface-700
+           transition-colors duration-150 cursor-pointer;
+  }
+
+  .toolbar-btn.active {
+    @apply text-accent bg-surface-700;
+  }
+
+  .panel {
+    @apply bg-surface-800/[0.98] backdrop-blur-sm border border-surface-600/20 
+           rounded-xl shadow-2xl;
+  }
+
+  .input-field {
+    @apply w-full px-3 py-2 bg-surface-700 border border-surface-600/30 
+           rounded-lg text-surface-100 placeholder-surface-400
+           focus:outline-none focus:ring-2 focus:ring-accent/50 
+           focus:border-accent/50 transition-all duration-150;
+  }
+
+  .btn-primary {
+    @apply px-4 py-2 bg-accent text-surface-900 font-medium rounded-lg
+           hover:bg-accent-hover transition-colors duration-150
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply px-4 py-2 bg-surface-700 text-surface-200 font-medium rounded-lg
+           hover:bg-surface-600 transition-colors duration-150 border border-surface-600/30;
+  }
+
+  .presence-dot {
+    @apply w-2.5 h-2.5 rounded-full ring-2 ring-surface-800;
+  }
+}
